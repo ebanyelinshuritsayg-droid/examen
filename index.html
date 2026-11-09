@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>Papeleria</title>
+</head>
+<body>
+
+<h1 style="background-color: beige;">Papeleria Escolar</h1>
+<img src="logo cecytem.png"style="width: 150px; float: right; margin-left: 15px;">
+ 
+<P>Esta pagina es de la papeleria del cecytem que calcula el cobro de las copias de color y blancas con negro,se calculara de la siguiente forma: 
+    las copias a color tendram un costo de $1.50 y blancas con negro de a $1, esto si el numero de copias es de 1 a 50 , si el numero de copias es de 51 a 100 el costo disminuira en la copia
+    de a color a $1.3 y la de blanco y negro $0.80, si las copias son mas de 100 sera de $1.0 y blanca y negro sera $0.50, a los estudiantes que muestren su credencial se le aplicara el 25% de descuento
+</P>
+<p>COPIAS</p>
+<input type="number" id="c">
+
+<br><br>
+
+<P>TIPO DE COPIAS</P>
+<select id="t">
+<option value="1">Color</option>
+<option value="2">Blanco y negro</option>
+</select>
+
+<br><br>
+
+<input type="checkbox" id="a"> Tengo credencial
+
+<br><br>
+
+<button onclick="calcular()">Calcular</button>
+
+<p id="r"></p>
+
+<script>
+function calcular() {
+    var c = Number(document.getElementById("c").value);
+    var t = document.getElementById("t").value;
+    var p = 0;
+
+    if (c <= 50) {
+        if (t == 1) {
+            p = 1.50;
+        } else {
+            p = 1.00;
+        }
+    } 
+    else if (c <= 100) {
+        if (t == 1) {
+            p = 1.30;
+        } else {
+            p = 0.80;
+        }
+    } 
+    else {
+        if (t == 1) {
+            p = 1.00;
+        } else {
+            p = 0.50;
+        }
+    }
+
+    var total = c * p;
+
+    var tieneCredencial = document.getElementById("a").checked;
+    
+    if (tieneCredencial == true) {
+        total = total * 0.75;
+    }
+
+    document.getElementById("r").innerHTML = "Total: $" + total;
+}
+</script>
+
+</body>
+</html>
